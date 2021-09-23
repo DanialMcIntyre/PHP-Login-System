@@ -7,4 +7,9 @@
 
     //Our config is below
 
+    //include DB.php
+    include_once "C:\wamp64\www\FullStackPHP\PHP-Login-System\inc\classes\DB.php";
+
+    $con = DB::getConnection();
+
 ?>
