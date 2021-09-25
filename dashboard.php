@@ -4,18 +4,9 @@
     //Require the config
     require_once "inc/config.php";
 
-    ForceLogin();
+    Page::ForceLogin();
 
-    $user_id = $_SESSION['user_id'];
-    $getUserInfo = $con->prepare("SELECT email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
-    $getUserInfo->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-    $getUserInfo->execute();
-
-    if($getUserInfo->rowCount() == 1) {
-        $User = $getUserInfo->fetch(PDO::FETCH_ASSOC);
-    } else {
-        header("Location: /FullStackPHP/PHP-Login-System/logout.php"); exit;
-    }
+    $User = new User($_SESSION['user_id']);
 
 ?>
 
@@ -37,7 +28,7 @@
 
     <div class="uk-section uk-container">
         <h2>Dashboard</h2>
-        <p>Hello <?php echo $User['email']; ?>, you registered at <?php echo $User['reg_time']; ?></p>
+        <p>Hello <?php echo $User->email; ?>, you registered at <?php echo $User->reg_time; ?></p>
         <p><a href="/FullStackPHP/PHP-Login-System/logout.php">Logout</a></p>
     </div>
 
