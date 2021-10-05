@@ -30,6 +30,7 @@
         <h2>Dashboard</h2>
         <p>Hello <?php echo $User->email; ?>, you registered at <?php echo $User->reg_time; ?></p>
         <p><a href="/FullStackPHP/PHP-Login-System/logout.php">Logout</a></p>
+        <p><a href="/FullStackPHP/PHP-Login-System/changepass.php">Change Password</a></p>
     </div>
 
     <?php require_once "inc/footer.php";?>
